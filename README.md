@@ -1,22 +1,24 @@
-# 🩺 HealthPrompt - Clinical Document Risk Classification (NLP)
+# 🥦 NutriNova - Food Product Nutrition Analysis & Classification
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Data-Pandas-green?logo=pandas)
 ![Scikit-learn](https://img.shields.io/badge/ML-Scikit--learn-yellow?logo=scikitlearn)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-HealthPrompt is a **Natural Language Processing (NLP)** project designed to classify clinical medical notes into one of three risk levels: **Abnormal**, **Normal**, or **Inconclusive**. It utilizes state-of-the-art text preprocessing, vectorization, and machine learning algorithms to assist in automated medical risk triage.
+**NutriNova** is a Data Science project that explores nutritional information from food products and performs analytical and predictive tasks such as **nutritional grade classification**, **data cleaning**, and **product insights discovery**. This project uses the **Open Food Facts** dataset and leverages key Python libraries to process, visualize, and model the data.
 
-> 🧠 Built with data science, 🩺 inspired by healthcare, and 🤖 powered by ML!
+> 🍽️ Inspired by food tech, 🔍 driven by data, and 📊 powered by machine learning.
 
 ---
 
 ## 🌟 Project Highlights
 
-- Binary & Multiclass classification of clinical notes
-- Utilizes **CountVectorizer**, **TF-IDF**, and **Word2Vec**
-- Compared multiple classifiers: **Logistic Regression**, **Random Forest**, **XGBoost**, etc.
-- Applied model evaluation metrics (accuracy, recall, precision, F1-score)
-- Clean and reproducible pipeline for preprocessing and modeling
+- End-to-end data pipeline: ingestion → cleaning → analysis → modeling
+- Comprehensive **Exploratory Data Analysis (EDA)** to uncover trends and correlations
+- Handled missing data, outliers, and unknown labels effectively
+- Classification of food products based on their **nutrition grade (a to e)**
+- Normalized and balanced label distribution for fair modeling
+- Trained and evaluated multiple ML models using cross-validation and visual tools
 
 ---
 
@@ -24,7 +26,8 @@ HealthPrompt is a **Natural Language Processing (NLP)** project designed to clas
 
 - **Language**: Python 3.10+
 - **Libraries**: 
-  - `pandas`, `numpy`, `scikit-learn`, `xgboost`, `gensim`, `matplotlib`, `seaborn`, `nltk`
+  - `pandas`, `numpy`, `matplotlib`, `seaborn`
+  - `scikit-learn`, `xgboost`, `lightgbm`
 - **IDE**: Jupyter Notebook, VS Code
 - **Version Control**: Git + GitHub
 
@@ -33,22 +36,45 @@ HealthPrompt is a **Natural Language Processing (NLP)** project designed to clas
 ## 🧠 How It Works
 
 1. **Dataset**:
-   - Synthetic healthcare dataset simulating clinical notes and outcomes
-2. **Preprocessing**:
-   - Lowercasing, stopword removal, punctuation cleaning
-   - Lemmatization with `nltk`
-3. **Feature Extraction**:
-   - `CountVectorizer` and `TF-IDF` for basic representations
-   - `Word2Vec` (gensim) for semantic embedding
-4. **Modeling**:
-   - Trained and evaluated multiple models including:
+   - Based on the [Open Food Facts](https://world.openfoodfacts.org/) dataset
+   - Contains nutrition information of thousands of food products globally
+
+2. **Data Cleaning & Preprocessing**:
+   - Removed irrelevant and duplicate entries
+   - Filtered to retain meaningful columns like `energy_100g`, `fat_100g`, `sugars_100g`, etc.
+   - Removed entries with `"unknown"` nutrition grades
+   - Scaled numerical features using `StandardScaler`
+   - Label counts:
+     ```
+     Grade counts:
+     a    39946
+     b    38561
+     c    52288
+     d    71660
+     e    49563
+     ```
+
+3. **EDA (Exploratory Data Analysis)**:
+   - Visualized distribution of nutrition grades
+   - Correlation heatmaps to identify feature impact on grades
+   - Analyzed outliers and skewed nutrient values
+
+4. **Feature Engineering**:
+   - Selected features influencing nutritional quality: energy, fats, sugars, salt, etc.
+   - Normalized input values for ML modeling
+
+5. **Modeling**:
+   - Trained multiple ML classifiers:
      - Logistic Regression
-     - Naive Bayes
      - Random Forest
      - XGBoost
+     - LightGBM
      - K-Nearest Neighbors
-5. **Evaluation**:
-   - Used confusion matrix, classification report, and ROC-AUC
+   - Evaluation:
+     - Accuracy
+     - Confusion Matrix
+     - Precision, Recall, F1-score
+     - Cross-validation
 
 ---
 
@@ -56,42 +82,18 @@ HealthPrompt is a **Natural Language Processing (NLP)** project designed to clas
 
 ```bash
 # 1. Clone the Repository
-git clone https://github.com/aswinroshanrajendran/healthprompt.git
-cd healthprompt
+git clone https://github.com/yourusername/nutrinova.git
+cd nutrinova
 
 # 2. Create and Activate a Virtual Environment
-python -m venv health-env
+python -m venv nutri-env
 # On Windows
-health-env\Scripts\activate
+nutri-env\Scripts\activate
 # On macOS/Linux
-source health-env/bin/activate
+source nutri-env/bin/activate
 
 # 3. Install Dependencies
 pip install -r requirements.txt
 
-# 4. Run Notebooks or Scripts
-# Open notebooks in Jupyter or run preprocessing/training scripts
-```
-
-## 📁 Folder Structure
-
-healthprompt/
-│
-├── data/
-│   └── clinical_notes.csv         # Input dataset
-│
-├── notebooks/
-│   ├── 1_EDA.ipynb                # Exploratory Data Analysis
-│   ├── 2_Preprocessing.ipynb      # Text cleaning & preparation
-│   ├── 3_Model_Training.ipynb     # ML training and evaluation
-│
-├── models/
-│   └── saved_model.pkl            # Trained model (optional)
-│
-├── utils/
-│   ├── text_cleaning.py           # Preprocessing functions
-│
-├── requirements.txt
-└── README.md
-
-
+# 4. Launch Notebooks
+jupyter notebook
