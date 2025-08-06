@@ -97,3 +97,30 @@ pip install -r requirements.txt
 
 # 4. Launch Notebooks
 jupyter notebook
+```
+
+## 📊 Insights
+Products with grades D and E had significantly higher sugar, salt, and saturated fat levels
+
+Grade A products were generally low in processed ingredients and often plant-based
+
+Feature scaling and class balancing helped reduce model bias
+
+## 🔮 Future Enhancements
+Add Streamlit dashboard for interactive model use
+
+Incorporate product image data using CNNs
+
+Real-time food label scanner using mobile interface + OCR
+
+Nutrition-based health recommendation system
+
+## 📜 License
+This project is open-source and available under the MIT License.
+
+## 🙋‍♂️ About Me
+Aswin Roshan Rajendran
+🎓 Master’s in Data Science & Analytics, EPITA Paris
+📧 aswinroshan17@gmail.com
+📍 Paris, France
+🔗 LinkedIn | GitHub
